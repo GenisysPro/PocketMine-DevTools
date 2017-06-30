@@ -24,6 +24,7 @@ use pocketmine\command\CommandExecutor;
 use pocketmine\command\CommandSender;
 use pocketmine\permission\Permission;
 use pocketmine\Player;
+use pocketmine\network\protocol\Info;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginLoadOrder;
@@ -216,10 +217,8 @@ class DevTools extends PluginBase implements CommandExecutor{
 			"creationDate" => time()
 		];
 
-		if(version_compare($server->getApiVersion(), "3.0.0-ALPHA5") >= 0){
-			$metadata["protocol"] = \pocketmine\network\mcpe\protocol\ProtocolInfo::CURRENT_PROTOCOL;
-		}else{
-			$metadata["protocol"] = \pocketmine\network\protocol\Info::CURRENT_PROTOCOL;
+		if(version_compare($server->getApiVersion(), "3.0.1") >= 0){
+			$metadata["protocol"] = Info::CURRENT_PROTOCOL;
 		}
 
 		$phar->setMetadata($metadata);
